@@ -1,0 +1,69 @@
+[
+  {
+    "name": "Artist 1",
+    "genre": "ggg",
+    "albums": [
+      "ggg"
+    ],
+    "birthdate": "2023-08-17",
+    "activeSince": "2023-08-18",
+    "genres": [
+      "hhh"
+    ],
+    "labels": [
+      "ojio"
+    ],
+    "website": "https://opkok.com",
+    "image": "https://archives.bulbagarden.net/media/upload/thumb/3/3e/0038Ninetales.png/250px-0038Ninetales.png",
+    "shortDescription": "awdawd"
+  },
+  {
+    "name": "Artist 2",
+    "genre": "Rock",
+    "albums": [
+      "Album A",
+      "Album B"
+    ]
+  },
+  {
+    "name": "Artist 1",
+    "genre": "Pops",
+    "albums": [
+      "Album 1",
+      "Album 2"
+    ]
+  },
+  {
+    "name": "Artist 3",
+    "genre": "Pops",
+    "albums": [
+      "Album 1",
+      "Album 2"
+    ]
+  },
+  {
+    "name": "awdawd",
+    "genre": "awdawd",
+    "albums": [
+      "awdawd"
+    ]
+  },
+  {
+    "name": "Handlen",
+    "genre": "ggg",
+    "albums": [
+      "ggg"
+    ],
+    "birthdate": "2023-08-24",
+    "activeSince": "2023-08-15",
+    "genres": [
+      "hhh"
+    ],
+    "labels": [
+      "ojio"
+    ],
+    "website": "https://opkok.com",
+    "image": "https://archives.bulbagarden.net/media/upload/thumb/3/3e/0038Ninetales.png/250px-0038Ninetales.png",
+    "shortDescription": "awdawd"
+  }
+]

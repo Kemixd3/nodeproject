@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artist Details</title>
+  </head>
+  <body>
+    <h1 id="name"></h1>
+    <p>Genre: <span id="genre"></span></p>
+    <p>Birthdate: <span id="birthdate"></span></p>
+    <p>Active Since: <span id="activeSince"></span></p>
+    <p>Genres: <span id="genres"></span></p>
+    <p>Labels: <span id="labels"></span></p>
+    <p>Website: <span id="website"></span></p>
+    <p>Short Description: <span id="shortDescription"></span></p>
+    <p>Albums: <span id="albums"></span></p>
+
+    <script>
+      let artistName = decodeURIComponent(
+        window.location.pathname.split("/")[1]
+      );
+
+      fetch(`/kunstner/${encodeURIComponent(artistName)}`)
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("name").textContent = data.name;
+          document.getElementById("genre").textContent = data.genre;
+          document.getElementById("birthdate").textContent = data.birthdate;
+          document.getElementById("activeSince").textContent = data.activeSince;
+          document.getElementById("genres").textContent =
+            data.genres.join(", ");
+          document.getElementById("labels").textContent =
+            data.labels.join(", ");
+          document.getElementById(
+            "website"
+          ).innerHTML = `<a href="${data.website}" target="_blank">${data.website}</a>`;
+          document.getElementById("shortDescription").textContent =
+            data.shortDescription;
+          document.getElementById("albums").textContent =
+            data.albums.join(", ");
+        })
+        .catch((error) => console.error(error));
+    </script>
+  </body>
+</html>

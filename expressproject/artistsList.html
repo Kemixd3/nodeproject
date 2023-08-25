@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artists List</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to My Music App</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/artistsList.html">Artists List</a></li>
+          <li><a href="/addArtist.html">Add Artist</a></li>
+          <!-- Add more navigation links as needed -->
+        </ul>
+      </nav>
+    </header>
+    <h1>Artists List</h1>
+    <ul id="artistsList"></ul>
+
+    <script>
+      fetch("/artists")
+        .then((response) => response.json())
+        .then((data) => {
+          const artistsList = document.getElementById("artistsList");
+          data.forEach((artist) => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `
+            <p></p>
+            <strong>${artist.name}</strong> - ${artist.genre}<br>
+            Birthdate: ${artist.birthdate}<br>
+            Active Since: ${artist.activeSince}<br>
+            Genres: ${artist.genres}<br>
+            Labels: ${artist.labels}<br>
+            Website: <a href="${artist.website}" target="_blank">${artist.website}</a><br>
+            Short Description: ${artist.shortDescription}<br>
+          `;
+            artistsList.appendChild(listItem);
+          });
+        })
+        .catch((error) => console.error(error));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Delete Artist</title>
+  </head>
+  <body>
+    <h1>Delete Artist</h1>
+    <form id="deleteArtistForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required /><br />
+      <button type="submit">Delete Artist</button>
+    </form>
+
+    <script>
+      const form = document.getElementById("deleteArtistForm");
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const name = form.name.value;
+
+        const response = await fetch(`/artists/${name}`, {
+          method: "DELETE",
+        });
+
+        if (response.ok) {
+          window.location.href = "/artistsList.html";
+        } else {
+          console.error("Error deleting artist");
+        }
+      });
+    </script>
+  </body>
+</html>
