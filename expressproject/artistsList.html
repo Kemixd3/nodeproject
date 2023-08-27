@@ -11,6 +11,10 @@
           <li><a href="/">Home</a></li>
           <li><a href="/artistsList.html">Artists List</a></li>
           <li><a href="/addArtist.html">Add Artist</a></li>
+
+          <li><a href="/userPage.html">My Favorites</a></li>
+
+          <li><a href="/deleteArtist.html">Delete an Artist</a></li>
           <!-- Add more navigation links as needed -->
         </ul>
       </nav>
@@ -19,6 +23,7 @@
     <ul id="artistsList"></ul>
 
     <script>
+      // Fetch artist data and populate the list
       fetch("/artists")
         .then((response) => response.json())
         .then((data) => {
@@ -26,16 +31,42 @@
           data.forEach((artist) => {
             const listItem = document.createElement("li");
             listItem.innerHTML = `
-            <p></p>
-            <strong>${artist.name}</strong> - ${artist.genre}<br>
-            Birthdate: ${artist.birthdate}<br>
-            Active Since: ${artist.activeSince}<br>
-            Genres: ${artist.genres}<br>
-            Labels: ${artist.labels}<br>
-            Website: <a href="${artist.website}" target="_blank">${artist.website}</a><br>
-            Short Description: ${artist.shortDescription}<br>
-          `;
+              <strong>${artist.name}</strong> - ${artist.genre}<br>
+              Birthdate: ${artist.birthdate}<br>
+              Active Since: ${artist.activeSince}<br>
+              Genres: ${artist.genres}<br>
+              Labels: ${artist.labels}<br>
+              Website: <a class="website" href="${artist.website}" target="_blank">${artist.website}</a><br>
+              Short Description: ${artist.shortDescription}<br>
+              <button class="addFavorite">Add to favorites</button>
+            `;
             artistsList.appendChild(listItem);
+          });
+
+          // Add event listeners to favorite buttons
+          const addFavoriteButtons = document.querySelectorAll(".addFavorite");
+          addFavoriteButtons.forEach((button) => {
+            button.addEventListener("click", async (event) => {
+              const artistName = event.target
+                .closest("li")
+                .querySelector("strong").textContent;
+
+              // Send a request to the server to add artist as favorite
+              const response = await fetch(
+                `/addFavorite/${encodeURIComponent(artistName)}`,
+                {
+                  method: "POST",
+                  // Include authentication headers or tokens if needed
+                }
+              );
+
+              if (response.status === 200) {
+                console.log("Artist added to favorites!");
+                // Optionally, you can update UI to indicate the artist was added as a favorite
+              } else {
+                alert("Error adding artist to favorites");
+              }
+            });
           });
         })
         .catch((error) => console.error(error));

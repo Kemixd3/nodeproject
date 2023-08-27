@@ -1,0 +1,28 @@
+<!-- Display user's favorite artists -->
+<h1 id="username">User page</h1>
+<p>This is your current favorite artists:</p>
+<ul id="favoriteArtistsList">
+  <!-- Display each favorite artist -->
+  <!-- Example: <li>Favorite Artist 1</li> -->
+</ul>
+
+<script>
+  const usernameElement = document.getElementById("username");
+  const storedUsername = "USERNAME"; // This will be replaced by the username value on the server side
+  usernameElement.textContent = "Hello " + storedUsername;
+
+  // Fetch user's favorite artists and update UI
+  fetch("/userFavorites") // You need to define a route to fetch user's favorites
+    .then((response) => response.json())
+    .then((data) => {
+      const favoriteArtistsList = document.getElementById(
+        "favoriteArtistsList"
+      );
+      data.favorites.forEach((artistName) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = artistName;
+        favoriteArtistsList.appendChild(listItem);
+      });
+    })
+    .catch((error) => console.error(error));
+</script>

@@ -38,7 +38,7 @@
           document.getElementById("albums").textContent =
             data.albums.join(", ");
         })
-        .catch((error) => console.error(error));
+        .catch((error) => (window.location.href = "/"));
     </script>
   </body>
 </html>
