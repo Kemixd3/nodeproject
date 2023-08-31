@@ -83,5 +83,41 @@
     "website": "https://awdawdwad",
     "image": "awdawdawd",
     "shortDescription": "awdawdawd"
+  },
+  {
+    "name": "Silas",
+    "genre": "ggg",
+    "albums": [
+      "ggg"
+    ],
+    "birthdate": "11111-11-11",
+    "activeSince": "1111-11-11",
+    "genres": [
+      "hhh"
+    ],
+    "labels": [
+      "awdawdawd"
+    ],
+    "website": "http://awdawd",
+    "image": "awd",
+    "shortDescription": "awdawd"
+  },
+  {
+    "name": "iphone5",
+    "genre": "ggg",
+    "albums": [
+      "awdadw"
+    ],
+    "birthdate": "11111-11-11",
+    "activeSince": "0111-11-11",
+    "genres": [
+      "hhh"
+    ],
+    "labels": [
+      "ojio"
+    ],
+    "website": "https://opkok.com",
+    "image": "https://archives.bulbagarden.net/media/upload/thumb/3/3e/0038Ninetales.png/250px-0038Ninetales.png",
+    "shortDescription": "awdawd"
   }
 ]
