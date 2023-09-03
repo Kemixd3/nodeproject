@@ -2,9 +2,9 @@
   "name": "expressproject",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "backend/app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon backend/app.js",
     "kill": "taskkill /F /FI \"PID eq $(netstat -ano | findstr :3000)\""
   },
   "author": "",
