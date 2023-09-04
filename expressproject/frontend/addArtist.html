@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Artist</title>
+  </head>
+  <body>
+    <h1>Add Artist</h1>
+    <form id="addArtistForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required /><br />
+      <label for="genre">Genre:</label>
+      <input type="text" id="genre" name="genre" required /><br />
+      <label for="albums">Albums (comma-separated):</label>
+      <input type="text" id="albums" name="albums" required /><br />
+      <label for="birthdate">Birthdate:</label>
+      <input type="date" id="birthdate" name="birthdate" required /><br />
+      <label for="activeSince">Active Since:</label>
+      <input type="date" id="activeSince" name="activeSince" required /><br />
+      <label for="genres">Genres (comma-separated):</label>
+      <input type="text" id="genres" name="genres" required /><br />
+      <label for="labels">Labels (comma-separated):</label>
+      <input type="text" id="labels" name="labels" required /><br />
+      <label for="website">Website:</label>
+      <input type="url" id="website" name="website" required /><br />
+      <label for="image">Image Filename:</label>
+      <input type="text" id="image" name="image" required /><br />
+      <label for="shortDescription">Short Description:</label>
+      <textarea
+        id="shortDescription"
+        name="shortDescription"
+        required
+      ></textarea
+      ><br />
+      <button type="submit">Add Artist</button>
+    </form>
+
+    <script>
+      const form = document.getElementById("addArtistForm");
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const name = form.name.value;
+        const genre = form.genre.value;
+        const albums = form.albums.value
+          .split(",")
+          .map((album) => album.trim());
+        const birthdate = form.birthdate.value;
+        const activeSince = form.activeSince.value;
+        const genres = form.genres.value
+          .split(",")
+          .map((genre) => genre.trim());
+        const labels = form.labels.value
+          .split(",")
+          .map((label) => label.trim());
+        const website = form.website.value;
+        const image = form.image.value;
+        const shortDescription = form.shortDescription.value;
+
+        const response = await fetch("/artists", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            genre,
+            albums,
+            birthdate,
+            activeSince,
+            genres,
+            labels,
+            website,
+            image,
+            shortDescription,
+          }),
+        });
+
+        if (response.ok) {
+          window.location.href = "/artistsList.html";
+        } else {
+          console.error("Error adding artist");
+        }
+      });
+    </script>
+  </body>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-top: 40px;
+    }
+
+    #addArtistForm {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="url"],
+    textarea {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</html>

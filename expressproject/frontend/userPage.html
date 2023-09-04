@@ -20,13 +20,14 @@
       );
       data.favorites.forEach((artistName) => {
         const listItem = document.createElement("li");
+        listItem.textContent = `${artistName} `;
+
         const newTab = document.createElement("a");
         newTab.textContent = "Open in new tab";
-        newTab.href = `/${artistName}`;
-        listItem.textContent = `${artistName}`;
+        newTab.href = `/${encodeURIComponent(artistName)}`;
 
+        listItem.appendChild(newTab);
         favoriteArtistsList.appendChild(listItem);
-        favoriteArtistsList.appendChild(newTab);
       });
     })
     .catch((error) => console.error(error));
@@ -36,8 +37,8 @@
   body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
+    margin: 10;
+    padding: 10;
     color: #333;
   }
 

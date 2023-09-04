@@ -1,5 +1,23 @@
 [
   {
+    "name": "Artist 1",
+    "genre": "ggg",
+    "albums": [
+      "ggg"
+    ],
+    "birthdate": "2023-08-17",
+    "activeSince": "2023-08-18",
+    "genres": [
+      "hhh"
+    ],
+    "labels": [
+      "ojio"
+    ],
+    "website": "https://opkok.com",
+    "image": "https://archives.bulbagarden.net/media/upload/thumb/3/3e/0038Ninetales.png/250px-0038Ninetales.png",
+    "shortDescription": "awdawd"
+  },
+  {
     "name": "Artist 2",
     "genre": "Rock",
     "albums": [
@@ -100,24 +118,6 @@
     ],
     "website": "https://opkok.com",
     "image": "https://archives.bulbagarden.net/media/upload/thumb/3/3e/0038Ninetales.png/250px-0038Ninetales.png",
-    "shortDescription": "awdawd"
-  },
-  {
-    "name": "Nikolai Berthelsen",
-    "genre": "awdawdawd",
-    "albums": [
-      "awdawdawd"
-    ],
-    "birthdate": "2023-09-20",
-    "activeSince": "2023-09-13",
-    "genres": [
-      "awdwadaw"
-    ],
-    "labels": [
-      "awdawdawd"
-    ],
-    "website": "https://www.youtube.com/watch?v=TW02hwhBvo4",
-    "image": "wdawdawd",
     "shortDescription": "awdawd"
   }
 ]
