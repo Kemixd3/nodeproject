@@ -38,15 +38,17 @@ app.post("/signup", async (req, res) => {
     return;
   }
 });
-
+//serve login.html
 app.get("/login.html", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/login.html"));
 });
-
+//serve signup.html
 app.get("/signup.html", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/signup.html"));
 });
 
+//when you call the login endpoint here you send username and password which will be
+//compared with the json users and then it will save the user session in a global app.locals value as a cookie
 app.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -76,9 +78,9 @@ app.post("/login", async (req, res) => {
   }
 });
 
+//checking if the user is logged in and has valid credentials when ever you try to access any page
+//where you need to be authenticated
 const authenticate = (req, res, next) => {
-  //checking if the user is logged in and has valid credentials
-
   //for debugging
   //app.locals.isAuthenticated = true;
   if (app.locals.isAuthenticated) {
@@ -95,6 +97,7 @@ const authenticate = (req, res, next) => {
 };
 app.use(authenticate);
 
+//get the artist name endpoint
 app.get("/kunstner/:artistName", (req, res) => {
   const artistName = req.params.artistName;
   //Loading the artists data from JSON
@@ -200,6 +203,8 @@ app.put("/artists/:artistName", (req, res) => {
   }
 });
 
+//this will add the clicked artist req.params.artistName to a user who is logged in (app.locals.storedUser.username)
+//to their favorites stored on the user in users.json
 app.post("/addFavorite/:artistName", async (req, res) => {
   try {
     const artistName = req.params.artistName;
